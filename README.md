@@ -1,36 +1,41 @@
-# Chapter 02 — Java Servlet/JSP MVC
+# EX4 — Java Servlet/JSP Survey
 
-Dự án học tập dựa trên Chapter 02 slides, Murach’s Java Servlets/JSP (3rd Ed.).
+Dự án học tập sử dụng Java Servlet, JSP và Maven. Ứng dụng nhận thông tin
+đăng ký email và hiển thị trang xác nhận.
 
 ## Cấu trúc
-- src/main/webapp/index.html: form đăng ký.
-- src/main/webapp/styles/main.css: định dạng giao diện.
-- src/main/java/murach/email/EmailListServlet.java: Controller.
-- src/main/java/murach/business/User.java: JavaBean chứa dữ liệu.
-- src/main/java/murach/data/UserDB.java: lớp lưu dữ liệu minh họa.
-- src/main/webapp/thanks.jsp: hiển thị kết quả.
-- src/main/webapp/WEB-INF/web.xml: cấu hình URL và trang mặc định.
-- pom.xml: cấu hình Maven.
+- `src/main/webapp/index.html`: form đăng ký.
+- `src/main/webapp/styles/main.css`: định dạng giao diện.
+- `src/main/java/murach/email/EmailListServlet.java`: nhận và kiểm tra dữ liệu.
+- `src/main/java/murach/business/User.java`: JavaBean chứa thông tin đăng ký.
+- `src/main/java/murach/data/UserDB.java`: lưu dữ liệu minh họa trong bộ nhớ.
+- `src/main/webapp/thanks.jsp`: hiển thị xác nhận.
+- `src/main/webapp/WEB-INF/web.xml`: cấu hình Servlet.
+- `pom.xml`: cấu hình Maven và tạo `ex4.war`.
 
-## Chạy từng bước
-1. Chuẩn bị JDK 8 trở lên, Maven và Apache Tomcat 9 (dự án dùng javax.servlet).
-2. Giải nén ZIP. Mở thư mục Chapter02-MVC bằng IDE hỗ trợ Maven, hoặc mở terminal tại thư mục chứa pom.xml.
-3. Chạy: `mvn clean package` (lần đầu cần Internet tải thư viện).
-4. Chép target/chapter02-mvc.war vào thư mục webapps của Tomcat 9.
-5. Khởi động Tomcat: Windows dùng bin/startup.bat; Linux/macOS dùng bin/startup.sh.
-6. Mở http://localhost:8080/chapter02-mvc/ (nếu Tomcat dùng cổng khác, thay 8080).
-7. Nhập email, tên và họ, nhấn Join Now. Trang cảm ơn hiển thị thông tin. Nhấn Return để quay lại.
+## Build và chạy
+1. Cài JDK 8 trở lên, Maven và Apache Tomcat 9.
+2. Mở terminal tại thư mục chứa `pom.xml`.
+3. Chạy `mvn clean package` để tạo `target/ex4.war`.
+4. Chép `target/ex4.war` vào thư mục `webapps` của Tomcat 9 rồi khởi động Tomcat.
+5. Mở `http://localhost:8080/ex4/`.
 
-Không mở index.html trực tiếp để chạy Servlet/JSP. Cần chạy qua Tomcat.
+Không mở `index.html` trực tiếp; Servlet và JSP cần chạy qua Tomcat.
 
 ## Luồng dữ liệu
-index.html gửi POST tới emailList. Servlet lấy các parameter, tạo User,
-gọi UserDB.insert, đặt attribute user rồi forward tới thanks.jsp.
-JSP đọc thuộc tính của User bằng EL, xuất nội dung qua c:out.
+Form gửi POST tới `/emailList`. Servlet kiểm tra và chuẩn hóa tên, email,
+tạo `User`, gọi `UserDB.insert`, sau đó chuyển tiếp tới `thanks.jsp`.
+JSP xuất dữ liệu bằng JSTL `c:out`.
 
-## Phần bổ sung so với slide
-Slide chưa có mã UserDB: bản này bổ sung lưu trong bộ nhớ để minh họa,
-không dùng SQL và không cần cấu hình database. Dữ liệu mất khi ứng dụng khởi động lại.
-Đã bổ sung pom.xml, UTF-8, kiểm tra đầu vào cơ bản và escape dữ liệu đầu ra bằng JSTL.
-GET hiển thị form; POST xử lý đăng ký. Đây là dự án học tập.
-Chưa build/chạy trên Tomcat trong môi trường tạo tệp nếu không có Maven/Tomcat.
+`UserDB` chỉ là nơi lưu tạm trong bộ nhớ để phục vụ bài tập; dữ liệu bị xóa
+khi ứng dụng khởi động lại. Đây không phải hệ thống lưu trữ production.
+
+## Docker
+Từ thư mục chứa `Dockerfile`, chạy:
+
+```sh
+docker build -t ex4 .
+docker run --rm -p 8080:8080 ex4
+```
+
+Sau đó mở `http://localhost:8080/`.
