@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-labelledby="title">
+  <title>Murach</title>
+  <rect width="180" height="180" fill="#d40000"/>
+  <path fill="#fff" d="M45 35h20v62L45 86zm31-13h20v75L76 86zm31-13h20v75l-20-11z"/>
+  <text x="90" y="145" fill="#fff" font-family="Georgia, serif" font-size="25" text-anchor="middle">MURACH</text>
+</svg>

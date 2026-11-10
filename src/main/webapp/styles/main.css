@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    margin: 2em;
+}
+
+main { max-width: 43em; }
+
+.logo {
+    display: block;
+    width: 150px;
+    height: auto;
+    margin-bottom: 1.5em;
+}
+
+h1, h2 { color: teal; }
+h1 { margin: 0 0 0.7em; }
+h2 { margin: 1.25em 0 0.65em; }
+
+label {
+    display: inline-block;
+    width: 9em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+input[type="text"], input[type="email"] {
+    width: 20em;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+}
+
+.radio-group label, .check-group label {
+    width: auto;
+    font-weight: normal;
+    margin: 0 0.6em 0 0.15em;
+}
+
+.radio-group input, .check-group input { margin: 0; }
+.check-group { margin-bottom: 1em; }
+
+.contact-method label { width: auto; }
+.contact-method select { font: inherit; }
+
+#submit { margin-top: 1.25em; }
