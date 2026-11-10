@@ -4,7 +4,7 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn -B clean package
 
-FROM tomcat:9.0-jdk17-temurin
+FROM tomcat:10.1.61-jdk17-temurin
 RUN rm -rf /usr/local/tomcat/webapps/* \
     && sed -i 's/<Server port="8005"/<Server port="-1"/' /usr/local/tomcat/conf/server.xml
 

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!doctype html>
 <html>
 <head>
@@ -13,12 +13,31 @@
 
     <p>Here is the information that you entered:</p>
 
-    <label>Email:</label>
-    <span><c:out value="${user.email}"/></span><br>
-    <label>First Name:</label>
-    <span><c:out value="${user.firstName}"/></span><br>
-    <label>Last Name:</label>
-    <span><c:out value="${user.lastName}"/></span><br>
+    <dl class="survey-results">
+        <dt>Email:</dt>
+        <dd><c:out value="${user.email}"/></dd>
+        <dt>First Name:</dt>
+        <dd><c:out value="${user.firstName}"/></dd>
+        <dt>Last Name:</dt>
+        <dd><c:out value="${user.lastName}"/></dd>
+        <dt>Date of Birth:</dt>
+        <dd>
+            <c:choose>
+                <c:when test="${not empty user.formattedDateOfBirth}">
+                    <c:out value="${user.formattedDateOfBirth}"/>
+                </c:when>
+                <c:otherwise>Not provided</c:otherwise>
+            </c:choose>
+        </dd>
+        <dt>How did you hear about us?</dt>
+        <dd><c:out value="${user.heardFrom}"/></dd>
+        <dt>Receive announcements and special offers?</dt>
+        <dd><c:out value="${user.wantsUpdates ? 'Yes' : 'No'}"/></dd>
+        <dt>Receive email announcements?</dt>
+        <dd><c:out value="${user.emailOK ? 'Yes' : 'No'}"/></dd>
+        <dt>Preferred contact method:</dt>
+        <dd><c:out value="${user.contactMethod}"/></dd>
+    </dl>
 
 <p>To enter another email address, click on the Back 
     button in your browser or the Return button shown 

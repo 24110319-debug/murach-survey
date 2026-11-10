@@ -14,18 +14,20 @@ Dự án học tập sử dụng Java Servlet, JSP và Maven. Ứng dụng nhậ
 - `pom.xml`: cấu hình Maven và tạo `ex4.war`.
 
 ## Build và chạy
-1. Cài JDK 8 trở lên, Maven và Apache Tomcat 9.
+1. Cài JDK 8 trở lên, Maven và Apache Tomcat 10.1.61.
 2. Mở terminal tại thư mục chứa `pom.xml`.
 3. Chạy `mvn clean package` để tạo `target/ex4.war`.
-4. Chép `target/ex4.war` vào thư mục `webapps` của Tomcat 9 rồi khởi động Tomcat.
+4. Chép `target/ex4.war` vào thư mục `webapps` của Tomcat 10.1.61 rồi khởi động Tomcat.
 5. Mở `http://localhost:8080/ex4/`.
 
 Không mở `index.html` trực tiếp; Servlet và JSP cần chạy qua Tomcat.
 
 ## Luồng dữ liệu
 Form gửi POST tới `/emailList`. Servlet kiểm tra và chuẩn hóa tên, email,
-tạo `User`, gọi `UserDB.insert`, sau đó chuyển tiếp tới `thanks.jsp`.
-JSP xuất dữ liệu bằng JSTL `c:out`.
+tạo `User` với ngày sinh và các lựa chọn khảo sát, gọi `UserDB.insert`,
+sau đó chuyển tiếp tới `thanks.jsp`. Trang xác nhận hiển thị ngày sinh
+theo định dạng `dd/MM/yyyy`, các lựa chọn đã gửi và xuất dữ liệu bằng
+JSTL `c:out`. Giao diện dùng màu chữ xanh nước biển.
 
 `UserDB` chỉ là nơi lưu tạm trong bộ nhớ để phục vụ bài tập; dữ liệu bị xóa
 khi ứng dụng khởi động lại. Đây không phải hệ thống lưu trữ production.

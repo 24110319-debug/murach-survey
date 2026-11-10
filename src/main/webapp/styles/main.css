@@ -2,7 +2,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11pt;
     margin: 2em;
+    color: #0077b6;
 }
+
+input, select, button { color: inherit; }
 
 main { max-width: 43em; }
 
@@ -13,7 +16,7 @@ main { max-width: 43em; }
     margin-bottom: 1.5em;
 }
 
-h1, h2 { color: teal; }
+h1, h2 { color: #0077b6; }
 h1 { margin: 0 0 0.7em; }
 h2 { margin: 1.25em 0 0.65em; }
 
@@ -24,7 +27,7 @@ label {
     margin-bottom: 0.5em;
 }
 
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], input[type="date"] {
     width: 20em;
     box-sizing: border-box;
     margin-bottom: 0.5em;
@@ -41,5 +44,15 @@ input[type="text"], input[type="email"] {
 
 .contact-method label { width: auto; }
 .contact-method select { font: inherit; }
+
+.survey-results {
+    display: grid;
+    grid-template-columns: minmax(12em, max-content) 1fr;
+    gap: 0.5em 1em;
+    max-width: 40em;
+}
+
+.survey-results dt { font-weight: bold; }
+.survey-results dd { margin: 0; }
 
 #submit { margin-top: 1.25em; }
