@@ -46,13 +46,16 @@ input[type="text"], input[type="email"], input[type="date"] {
 .contact-method select { font: inherit; }
 
 .survey-results {
-    display: grid;
-    grid-template-columns: minmax(12em, max-content) 1fr;
-    gap: 0.5em 1em;
+    border-collapse: collapse;
     max-width: 40em;
 }
 
-.survey-results dt { font-weight: bold; }
-.survey-results dd { margin: 0; }
+.survey-results th {
+    padding: 0.25em 1.5em 0.25em 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+.survey-results td { padding: 0.25em 0; }
 
 #submit { margin-top: 1.25em; }
